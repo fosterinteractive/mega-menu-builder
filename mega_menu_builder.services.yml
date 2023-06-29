@@ -1,0 +1,3 @@
+services:
+  mega_menu_builder.builder:
+    class: Drupal\mega_menu_builder\MegaMenuBuilder

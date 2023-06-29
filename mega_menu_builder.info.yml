@@ -1,0 +1,6 @@
+name: Mega Menu Builder
+description: Modify a drupal menu to format it into columns.
+package: Other
+type: module
+version: '1.0.0'
+core_version_requirement: ^9.2 || ^10
