@@ -172,6 +172,10 @@ class MegaMenuBuilder {
 
     // Only columns bigger then 2 can have a split column.
     if ($this->cols <= 2) {
+      $this->split = FALSE;
+      $this->splitId = '';
+      $this->splitAmount = 0;
+
       return FALSE;
     }
 
@@ -182,6 +186,10 @@ class MegaMenuBuilder {
       $after  = array_key_last($items) != $split_id;
       // Has items before and after then don't split.
       if ($before & $after) {
+        $this->split = FALSE;
+        $this->splitId = '';
+        $this->splitAmount = 0;
+
         return FALSE;
       }
     }
@@ -333,6 +341,7 @@ class MegaMenuBuilder {
       $col_dividend = $col_position_amount;
       $col_disvisor = 2;
     }
+
     // Calculate the ideal amount of links in each column. We take the total
     // links of the level 1 menu item (menu level 2 + 3) and divide by the
     // amount of columns.
