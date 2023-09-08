@@ -70,6 +70,12 @@ class MegaMenuBuilder {
    */
   public function build($item, int $cols) {
     $columns_data = [];
+    // Reset variables on build.
+    $this->split = FALSE;
+    $this->splitId = '';
+    $this->splitAmount = 0;
+    $this->panelData = [];
+    $this->total = 0;
 
     // If there are no child menu items then exit. It is only 1 menu item and we
     // can build a mega menu panel from 1 menu item.
@@ -172,10 +178,6 @@ class MegaMenuBuilder {
 
     // Only columns bigger then 2 can have a split column.
     if ($this->cols <= 2) {
-      $this->split = FALSE;
-      $this->splitId = '';
-      $this->splitAmount = 0;
-
       return FALSE;
     }
 
@@ -186,10 +188,6 @@ class MegaMenuBuilder {
       $after  = array_key_last($items) != $split_id;
       // Has items before and after then don't split.
       if ($before & $after) {
-        $this->split = FALSE;
-        $this->splitId = '';
-        $this->splitAmount = 0;
-
         return FALSE;
       }
     }
