@@ -68,7 +68,7 @@ class MegaMenuBuilder {
    * generate panels in a custom theme where col sizes can vary based on
    * custom logic.
    */
-  public function build($item, int $cols) {
+  public function build($item, int $cols, array $options = []) {
     $columns_data = [];
     // Reset variables on build.
     $this->split = FALSE;
@@ -76,6 +76,11 @@ class MegaMenuBuilder {
     $this->splitAmount = 0;
     $this->panelData = [];
     $this->total = 0;
+
+    // Set the multiplier if it is set in the options.
+    if (isset($options['multiplier'])) {
+      $this->multiplier = $options['multiplier'];
+    }
 
     // If there are no child menu items then exit. It is only 1 menu item and we
     // can build a mega menu panel from 1 menu item.
